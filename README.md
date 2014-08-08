@@ -7,12 +7,13 @@ Installation
 ============
 First, Install the requirements:
 ```
+CSHDJ
 python-pip
 ```
 
 Install this plugin:
 ```
-npm install git+https://github.com/nickdepinet/cshdj-googlemusic
+sudo npm install git+https://github.com/nickdepinet/cshdj-googlemusic
 ```
 
 Configuration
