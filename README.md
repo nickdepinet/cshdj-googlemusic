@@ -37,3 +37,8 @@ configuration: {
    }
 }
 ```
+
+If you do not know your device id, you can obtain it by running:
+```
+GMusicProxy -L
+```
