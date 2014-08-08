@@ -5,20 +5,14 @@ Plugin to CSHDJ to use Google Music as a song source
 
 Installation
 ============
+First, Install the requirements:
+```
+python-pip
+```
+
 Install this plugin:
 ```
 npm install git+https://github.com/nickdepinet/cshdj-googlemusic
-```
-Ensure that GMusicProxy is installed:
-
-via pip:
-```
-pip install GMusicProxy
-```
--or-
-from within the gmusicproxy submodule:
-```
-python setup.py install
 ```
 
 Configuration

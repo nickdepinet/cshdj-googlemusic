@@ -13,6 +13,9 @@
     "playlist-parser": "0.0.8",
     "xmldom": "~0.1.16"
   },
+  "scripts": {
+    "install" : "pip install https://github.com/diraimondo/gmusicproxy/tarball/master"
+  },
   "author": "Nick Depinet",
   "license": "MIT",
   "bugs": {
