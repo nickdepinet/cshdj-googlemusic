@@ -1,0 +1,22 @@
+{
+  "name": "cshdj-googlemusic",
+  "version": "0.1.0",
+  "description": "A Google Music song source for CSHDJ using GMusicProxy",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickdepinet/cshdj-googlemusic"
+  },
+  "dependencies": {
+    "q": "1.0.1",
+    "request": "2.40.0",
+    "playlist-parser": "0.0.8",
+    "xmldom": "~0.1.16"
+  },
+  "author": "Nick Depinet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nickdepinet/cshdj-googlemusic/issues"
+  },
+  "homepage": "https://github.com/nickdepinet/cshdj-googlemusic"
+}
