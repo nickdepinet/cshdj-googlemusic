@@ -8,6 +8,8 @@ Installation
 First, Install the requirements:
 ```
 CSHDJ
+python
+python-dev
 python-pip
 ```
 
