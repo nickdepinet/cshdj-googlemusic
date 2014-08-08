@@ -50,7 +50,7 @@ exports.init = function(_log, config) {
 exports.search = function(max_results, query) {
 	var deferred = Q.defer();
 
-	request.get(url+'/get_by_search?type=artist&num_tracks='+max_results+'&artist='+query, function(error, response, body) {
+	request.get(url+'/get_by_search?type=songs&num_tracks='+max_results+'&title='+query, function(error, response, body) {
 		if(error) {
 			deferred.reject(error);
 			return;

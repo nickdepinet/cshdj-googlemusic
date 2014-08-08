@@ -14,7 +14,7 @@
     "xmldom": "~0.1.16"
   },
   "scripts": {
-    "install" : "pip install https://github.com/diraimondo/gmusicproxy/tarball/master --allow-external eyed3 --allow-unverified eyed3"
+    "install" : "pip install https://github.com/nickdepinet/gmusicproxy/tarball/master --allow-external eyed3 --allow-unverified eyed3"
   },
   "author": "Nick Depinet",
   "license": "MIT",
