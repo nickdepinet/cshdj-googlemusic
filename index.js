@@ -13,6 +13,7 @@
  * }
  * 
  */
+/*jshint es5: true */
 
 var Q = require("q");
 var fs = require("fs");
@@ -20,7 +21,7 @@ var request = require("request");
 var parse = require('playlist-parser').M3U.parse;
 var spawn = require('child_process').spawn;
 
-var log, host, port, url, prc;
+var log, host, port, url, prc, random_serach_interval;
 
 exports.display_name = "Google Music";
 
@@ -36,6 +37,23 @@ function not_null(item) {
 	return  typeof item != "undefined";
 }
 
+function performRandomSearch() {
+  var terms = [
+    'astley', 'black keys', 'brothers', 'mine', 'orange',
+    'neon', 'yeasayer', 'master', 'lonely', 'boy',
+    'attack', 'camino', 'girl', 'arctic', 'monkeys',
+    'magic', 'fitz', 'night', 'daft', 'punk',
+    'release', 'got', 'alive', 'dead' ];
+  var query = terms[Math.floor(Math.random() * terms.length)];
+  exports.search(5, query)
+  .done(function(results) {
+    var count = results ? results.length : 0;
+    log('Performed random search for "' + query + '", got ' + count + ' results');
+  }, function(err) {
+    log.warn('Failed periodic random search for "' + query + '": ' + err.stack || err);
+  });
+}
+
 exports.init = function(_log, config) {
 	var deferred = Q.defer();
 	log = _log;
@@ -43,7 +61,17 @@ exports.init = function(_log, config) {
 	port = config.proxy.port;
 	url = 'http://' + host + ':' + port;
 	prc = spawn('GMusicProxy', ['-e '+config.proxy.login, '-p '+config.proxy.password, '-d '+config.proxy.device_id, '-H '+config.proxy.host, '-P '+config.proxy.port]);
+  random_search_interval = config.random_search_interval || 10;
 	deferred.resolve();
+  
+  if (random_search_interval) {
+    // Every 10 minutes, make a random search to keep authentication alive.
+    setInterval(performRandomSearch, random_search_interval * 60 * 1000);
+
+    // Perform first search after a moment.
+    setTimeout(performRandomSearch, 10 * 1000);
+  }
+
 	return deferred.promise;
 };
 

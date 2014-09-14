@@ -24,6 +24,7 @@ Configuration
 configuration: {
    //...
    'cshdj-googlemusic': {
+      random_search_interval: 10, //minutes between random searches to keep connection alive
       proxy: {
 	     host: 'your_gmusicproxy_host', //if you don't know, put localhost
              port: 'your_gmusicproxy_port', //if you don't know, put 9999
