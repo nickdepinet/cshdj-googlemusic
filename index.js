@@ -17,8 +17,8 @@
 var Q = require("q");
 var fs = require("fs");
 var request = require("request");
-var parse = require('playlist-parser').M3U.parse
-var spawn = require('child_process').spawn
+var parse = require('playlist-parser').M3U.parse;
+var spawn = require('child_process').spawn;
 
 var log, host, port, url, prc;
 
@@ -41,11 +41,11 @@ exports.init = function(_log, config) {
 	log = _log;
 	host = config.proxy.host;
 	port = config.proxy.port;
-	url = 'http://' + host + ':' + port
+	url = 'http://' + host + ':' + port;
 	prc = spawn('GMusicProxy', ['-e '+config.proxy.login, '-p '+config.proxy.password, '-d '+config.proxy.device_id, '-H '+config.proxy.host, '-P '+config.proxy.port]);
 	deferred.resolve();
 	return deferred.promise;
-}
+};
 
 exports.search = function(max_results, query) {
 	var deferred = Q.defer();
@@ -55,13 +55,13 @@ exports.search = function(max_results, query) {
 			deferred.reject(error);
 			return;
 		}
-		log.debug(body)
+		log.debug(body);
 		var res = parse(body).filter(not_null).map(format_result);
 		deferred.resolve(res);
 	});
 
 	return deferred.promise;
-}
+};
 
 exports.fetch = function(id, download_location) {
 	var deferred = Q.defer();
@@ -83,4 +83,5 @@ exports.fetch = function(id, download_location) {
 		deferred.resolve(download_path);
 	});
 	return deferred.promise;
-}
+};
+
